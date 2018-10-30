@@ -6,4 +6,13 @@ class HomeController < ApplicationController
   def about
     
   end
+
+  def camera
+
+  end
+
+  def essay
+
+  end
+  
 end
