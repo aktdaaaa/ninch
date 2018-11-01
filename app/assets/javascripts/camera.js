@@ -25,8 +25,6 @@ function startVideo() {
         .then(function (mediaStream) {
             console.log('取得したMediaStream->', mediaStream);
             videoStreamInUse = mediaStream;
-            // document.querySelector('video').src = window.URL.createObjectURL(mediaStream);
-            // 対応していればこっちの方が良い
             document.querySelector('video').srcObject = mediaStream;
 
 
@@ -57,10 +55,10 @@ function snapshot() {
     document.querySelector('img').src = canvasElement.toDataURL('image/webp');
 }
 // canvas上のイメージを保存
-function saveCanvas(saveType){
+function saveCanvas(saveType) {
     var imageType = "image/png";
     var fileName = "sample.png";
-    if(saveType === "jpeg"){
+    if (saveType === "jpeg") {
         imageType = "image/jpeg";
         fileName = "sample.jpg";
     }
@@ -72,10 +70,9 @@ function saveCanvas(saveType){
     // blobデータをa要素を使ってダウンロード
     saveBlob(blob, fileName);
 }
- 
+
 // Base64データをBlobデータに変換
-function Base64toBlob(base64)
-{
+function Base64toBlob(base64) {
     // カンマで分割して以下のようにデータを分ける
     // tmp[0] : データ形式（data:image/png;base64）
     // tmp[1] : base64データ（iVBORw0k～）
@@ -83,19 +80,18 @@ function Base64toBlob(base64)
     // base64データの文字列をデコード
     var data = atob(tmp[1]);
     // tmp[0]の文字列（data:image/png;base64）からコンテンツタイプ（image/png）部分を取得
-	var mime = tmp[0].split(':')[1].split(';')[0];
+    var mime = tmp[0].split(':')[1].split(';')[0];
     //  1文字ごとにUTF-16コードを表す 0から65535 の整数を取得
-	var buf = new Uint8Array(data.length);
-	for (var i = 0; i < data.length; i++) {
+    var buf = new Uint8Array(data.length);
+    for (var i = 0; i < data.length; i++) {
         buf[i] = data.charCodeAt(i);
     }
     // blobデータを作成
-	var blob = new Blob([buf], { type: mime });
+    var blob = new Blob([buf], { type: mime });
     return blob;
 }
 // 画像のダウンロード
-function saveBlob(blob, fileName)
-{
+function saveBlob(blob, fileName) {
     var url = (window.URL || window.webkitURL);
     // ダウンロード用のURL作成
     var dataUrl = url.createObjectURL(blob);

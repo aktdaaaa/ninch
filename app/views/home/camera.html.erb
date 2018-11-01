@@ -2,22 +2,25 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>MediaDevices.getUserMedia()</title>
+    <title>撮影＆アップロード</title>
 </head>
 <body>
 
-<button onclick="startVideo()">ビデオ開始！</button>
-<button onclick="stopVideo()">ビデオ終了！</button>
-<button onclick="snapshot()">写真撮影！</button>
-
-<h2>JavaScriptでカメラ表示(・８・)</h2>
+<div align="center">
+<button onclick="startVideo()">ビデオ開始</button>
+<button onclick="stopVideo()">ビデオ終了</button>
+<button onclick="snapshot()">撮影</button>
+<h2>これがあなたの顔です</h2>
 <video autoplay width="320" height="240"></video>
+</div>
 
-<h2>スナップショット！</h2>
-
-<canvas id="myCanvas" width="320" height="240"></canvas>
+<div align="center">
+<h2>撮影したやつ</h2>
+<!-- ここいじったら画像の大きさを変えられる(width, height) -->
+<canvas id="myCanvas" width="320" height="240"></canvas><br>
 <button onclick="saveCanvas('png');">pngで保存</button>
 <button onclick="saveCanvas('jpeg');">jpegで保存</button>
+</div>
 
 <script src="camera.js"></script>
 </body>
